@@ -1,1 +1,311 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏆 جام جهانی ۲۰۲۶</title>
 
+<style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Tahoma,Arial,sans-serif;
+  background:
+    radial-gradient(circle at top,#123d2c 0%,#061b14 42%,#020806 100%);
+  color:white;
+  min-height:100vh;
+}
+
+.container{
+  width:94%;
+  max-width:1100px;
+  margin:auto;
+  padding:20px 0 50px;
+}
+
+.header{
+  text-align:center;
+  padding:20px 10px 25px;
+}
+
+.header h1{
+  margin:0;
+  font-size:32px;
+}
+
+.header p{
+  color:#b9d8cc;
+  margin-top:10px;
+}
+
+.card{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:20px;
+  padding:20px;
+  margin-bottom:20px;
+  backdrop-filter:blur(10px);
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+h2{
+  margin-top:0;
+}
+
+.hidden{
+  display:none!important;
+}
+
+/* TEAM SELECT */
+
+.team-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:10px;
+  margin-top:18px;
+}
+
+.team-btn{
+  border:1px solid rgba(255,255,255,.12);
+  background:#102c23;
+  color:white;
+  padding:14px 8px;
+  border-radius:14px;
+  cursor:pointer;
+  font-size:15px;
+  transition:.15s;
+}
+
+.team-btn:hover{
+  background:#174637;
+  transform:translateY(-1px);
+}
+
+.team-btn.selected{
+  background:#1f8f61;
+  border:2px solid #72ffc2;
+  box-shadow:0 0 18px rgba(50,255,160,.25);
+  transform:scale(1.02);
+}
+
+.selected-box{
+  margin-top:18px;
+  padding:15px;
+  background:#09251c;
+  border-radius:14px;
+  text-align:center;
+  border:1px solid #205f49;
+}
+
+button.main{
+  width:100%;
+  border:0;
+  border-radius:15px;
+  padding:16px;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+  background:#20a86b;
+  color:white;
+  margin-top:15px;
+}
+
+button.main:disabled{
+  opacity:.35;
+  cursor:not-allowed;
+}
+
+button.secondary{
+  border:0;
+  border-radius:12px;
+  padding:11px 15px;
+  cursor:pointer;
+  background:#254d40;
+  color:white;
+  margin:5px;
+}
+
+/* GROUPS */
+
+.group-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:15px;
+}
+
+.group-card{
+  background:#071912;
+  border:1px solid #173b2f;
+  border-radius:17px;
+  padding:12px;
+  overflow:hidden;
+}
+
+.group-title{
+  text-align:center;
+  font-size:19px;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:12px;
+}
+
+th,td{
+  padding:7px 3px;
+  text-align:center;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+th{
+  color:#9ecdbb;
+}
+
+.user-row{
+  background:rgba(40,190,120,.15);
+  font-weight:bold;
+}
+
+.matches{
+  margin-top:12px;
+}
+
+.match{
+  background:#0d241b;
+  border-radius:10px;
+  padding:9px;
+  margin:6px 0;
+  text-align:center;
+  font-size:13px;
+}
+
+.match.user-match{
+  border:1px solid #2adf91;
+}
+
+.score-input{
+  width:45px;
+  padding:6px;
+  border-radius:8px;
+  border:1px solid #355f50;
+  background:#06120e;
+  color:white;
+  text-align:center;
+  font-size:16px;
+}
+
+.submit-score{
+  border:0;
+  background:#188658;
+  color:white;
+  padding:7px 10px;
+  border-radius:8px;
+  cursor:pointer;
+  margin-right:5px;
+}
+
+/* KNOCKOUT */
+
+.bracket{
+  display:grid;
+  gap:15px;
+}
+
+.knockout-round{
+  background:#071912;
+  border-radius:17px;
+  padding:15px;
+  border:1px solid #173b2f;
+}
+
+.knockout-match{
+  background:#10281e;
+  border-radius:12px;
+  padding:12px;
+  margin:8px 0;
+  text-align:center;
+}
+
+.knockout-match strong{
+  display:block;
+  margin:5px;
+}
+
+.winner{
+  color:#70ffb8;
+  font-weight:bold;
+}
+
+.champion{
+  text-align:center;
+  padding:35px 15px;
+  background:linear-gradient(135deg,#164e38,#092018);
+  border:2px solid #5effb0;
+  border-radius:25px;
+  margin-top:20px;
+}
+
+.champion .cup{
+  font-size:65px;
+}
+
+.champion h2{
+  font-size:30px;
+  margin:10px;
+}
+
+.status{
+  padding:12px;
+  border-radius:12px;
+  background:#09251c;
+  text-align:center;
+  margin-bottom:15px;
+}
+
+.danger{
+  background:#5c2020;
+}
+
+.info{
+  color:#b9d8cc;
+  line-height:1.8;
+}
+
+@media(max-width:600px){
+  .header h1{
+    font-size:25px;
+  }
+
+  .team-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .team-btn{
+    font-size:13px;
+    padding:12px 5px;
+  }
+
+  .card{
+    padding:14px;
+  }
+
+  table{
+    font-size:11px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header class="header">
+  <h1>🏆 جام جهانی ۲۰۲۶</h1>
+  <p>۴۸ تیم • ۱۲ گروه
